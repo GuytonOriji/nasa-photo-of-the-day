@@ -9,27 +9,28 @@ import Footer from "./footer/footer";
 
 function App() {
 
-  let [nasaData, setnasaData] = useState()
 
-{/*got too many 429 codes and ran out of vpns I coduldnt get the picof the day but im on standby https://api.nasa.gov/planetary/apod */}
-  useEffect(()=>{
-     axios.get("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=DEMO_KEY ")
-     
-     .then(data=>{
-       console.log(data.data.img_src);
-       setnasaData(nasaData=data.data.photos[Math.floor(Math.random() * data.data.photos.length)])
-           })
+ {/* picture of the day api https://api.nasa.gov/planetary/apod?api_key=n2SjQzacGW1ut0ZIxQoy1bNNZGoGIX2RhigGdAWl                  https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=DEMO_KEY */}
+ 
+ 
 
-      .catch(err=>{
-          console.log(err)
-      })
- },[]);
 
+  axios.get("https://api.nasa.gov/planetary/apod?api_key=n2SjQzacGW1ut0ZIxQoy1bNNZGoGIX2RhigGdAWl ")
+  .then(pod=>{
+      console.log(pod.data.img_src)
+       return setnasapod(nasapod = pod.data.img_src)
+  })
+  .catch(err=>{
+    console.log(err);
+    
+  })
+
+ let [nasapod, setnasapod] = useState()
 
   return (
     <div className="App">
-      <Header src={nasaData}/>
-      <Center src={nasaData}/>
+      <Header src={nasapod}/>
+      <Center />
       <Footer />
     </div>
   );
