@@ -11,7 +11,7 @@ function App() {
 
   let [nasaData, setnasaData] = useState()
 
-
+{/*got too many 429 codes and ran out of vpns I coduldnt get the picof the day but im on standby https://api.nasa.gov/planetary/apod */}
   useEffect(()=>{
      axios.get("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=DEMO_KEY ")
      
