@@ -1,9 +1,8 @@
  import React from 'react';
 
 
- function Footer(props){
+ function Footer(){
 
-    console.log("props in footer.js.....", props);
     
 
     return (

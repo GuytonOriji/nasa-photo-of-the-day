@@ -12,25 +12,49 @@ function App() {
 
  {/* picture of the day api https://api.nasa.gov/planetary/apod?api_key=n2SjQzacGW1ut0ZIxQoy1bNNZGoGIX2RhigGdAWl                  https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=DEMO_KEY */}
  
- 
+  let [nasapod, setnasapod] = useState()
+  let [nasaData, setnasaData] = useState() 
 
+useEffect(()=>{
 
   axios.get("https://api.nasa.gov/planetary/apod?api_key=n2SjQzacGW1ut0ZIxQoy1bNNZGoGIX2RhigGdAWl ")
   .then(pod=>{
-      console.log(pod.data.img_src)
-       return setnasapod(nasapod = pod.data.img_src)
+        setnasapod(nasapod = pod.data.hdurl)
   })
   .catch(err=>{
     console.log(err);
     
   })
 
- let [nasapod, setnasapod] = useState()
+
+},[])
+
+
+
+  useEffect(()=>{
+
+
+
+    axios.get("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=DEMO_KEY")
+
+    .then(data=>{
+    console.log(data.data.photos[0]);
+     setnasaData(nasaData=data.data.photos[0])
+
+        })
+
+    .catch(err=>{
+        console.log(err)
+        
+    })
+
+
+},[])
 
   return (
     <div className="App">
-      <Header src={nasapod}/>
-      <Center />
+      <Header img={nasapod} />
+      <Center img={nasaData}/>
       <Footer />
     </div>
   );

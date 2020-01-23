@@ -6,28 +6,13 @@ import axios from 'axios';
 
 
 
-export default function Center (){
+export default function Center (props){
 
    
-    
-        let [nasaData, setnasaData] = useState([]) 
+    console.log(props)
+        
        
-                useEffect(()=>{
-                        axios.get("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=DEMO_KEY")
-               
-                        .then(data=>{
-                        console.log(data.data.photos[0]);
-                        return setnasaData(nasaData=data.data.photos[0])
-
-                            })
-
-                        .catch(err=>{
-                            console.log(err)
-                            
-                        })
-
-                    
-                },[])
+             
 
     return(
         <div className="gallery">
@@ -35,7 +20,7 @@ export default function Center (){
                 <div>
                     <h1>Title of sec 1</h1>
                    <div className="photoContainer">
-                       <img src={nasaData} alt="" />
+                       <img src={props.img} alt="" />
                    </div>
                    <p>
                        loerem ipsum not really im about to <br />
@@ -50,7 +35,7 @@ export default function Center (){
                 <div>
                     <h1>Title of sec 2</h1>
                    <div className="photoContainer">
-                       <img src={nasaData} alt="" />
+                       <img src={props.img} alt="" />
                    </div>
                    <p>
                        loerem ipsum not really im about to <br />
@@ -64,7 +49,7 @@ export default function Center (){
                 <div>
                     <h1>Title of sec 3</h1>
                    <div className="photoContainer">
-                       <img src={nasaData} alt="" />
+                       <img src={props.img} alt="" />
                    </div>
                    <p>
                        loerem ipsum not really im about to <br />

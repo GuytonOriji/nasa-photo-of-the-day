@@ -4,7 +4,9 @@
  export default function Header(props){
     
     function imgSrc(){
-        console.log(props)
+        console.log(props.img.hdurl)
+        return props.img.hdurl
+        
     }
         
 
@@ -13,7 +15,7 @@
                 <h1>NASA Gallery</h1>
                 <button onClick={imgSrc}>Toggle Light</button>
                 <button onClick={imgSrc}>Next Gallery</button>
-                <img src={props.img_src} alt="" />
+                <img src={props.img} />
             </div>
         )
  }
